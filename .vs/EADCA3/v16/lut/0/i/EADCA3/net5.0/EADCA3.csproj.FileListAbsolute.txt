@@ -1,0 +1,11 @@
+C:\Users\malia\source\repos\EADCA3\.vs\EADCA3\v16\lut\0\i\EADCA3\net5.0\EADCA3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\malia\source\repos\EADCA3\.vs\EADCA3\v16\lut\0\i\EADCA3\net5.0\EADCA3.AssemblyInfoInputs.cache
+C:\Users\malia\source\repos\EADCA3\.vs\EADCA3\v16\lut\0\i\EADCA3\net5.0\EADCA3.AssemblyInfo.cs
+C:\Users\malia\source\repos\EADCA3\.vs\EADCA3\v16\lut\0\i\EADCA3\net5.0\EADCA3.RazorComponent.input.cache
+C:\Users\malia\source\repos\EADCA3\.vs\EADCA3\v16\lut\0\i\EADCA3\net5.0\RazorDeclaration\App.razor.g.cs
+C:\Users\malia\source\repos\EADCA3\.vs\EADCA3\v16\lut\0\i\EADCA3\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
+C:\Users\malia\source\repos\EADCA3\.vs\EADCA3\v16\lut\0\i\EADCA3\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
+C:\Users\malia\source\repos\EADCA3\.vs\EADCA3\v16\lut\0\i\EADCA3\net5.0\RazorDeclaration\_Imports.razor.g.cs
+C:\Users\malia\source\repos\EADCA3\.vs\EADCA3\v16\lut\0\i\EADCA3\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
+C:\Users\malia\source\repos\EADCA3\.vs\EADCA3\v16\lut\0\i\EADCA3\net5.0\RazorDeclaration\Shared\NavMenu.razor.g.cs
+C:\Users\malia\source\repos\EADCA3\.vs\EADCA3\v16\lut\0\i\EADCA3\net5.0\EADCA3.RazorComponent.output.cache

@@ -1,0 +1,124 @@
+﻿@page "/"
+@using System.Runtime.Serialization
+@inject HttpClient Http
+@using EADCA3
+
+
+<h3>IMDb Search</h3>
+<p>Search for a show or movie of your choice</p>
+
+
+<div class="col col-sm" style="border-color:black; border-radius:10px">
+    <label for="title">Search:</label>
+    <input id="title" @bind-value="@name" />
+    <button class="btn-outline-warning" @onclick="@ButtononClick">Search</button>
+
+</div>
+<br />
+
+@if (found)
+{
+    <div class="col-sm border rounded" style="border-color:darkgray; background-color:peru">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var t in data.results)
+                {
+                    if (t.year != 0)
+                    {
+                <tr>
+                    <td>@t.id</td>
+                    <td>@t.title</td>
+                    <td>@t.year</td>
+                </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+}
+
+
+@code {
+    private Root data;
+    private bool found;
+    private string name;
+    private List<Result> title { get; set; } = new List<Result>() { };
+
+    private async Task DataforAutofinish()
+    {
+        var client = new HttpClient();
+        var request = new HttpRequestMessage
+        {
+            Method = HttpMethod.Get,
+            RequestUri = new Uri("https://imdb8.p.rapidapi.com/title/find?q=Lost"),
+            Headers =
+{
+    { "x-rapidapi-host", "imdb8.p.rapidapi.com" },
+    { "x-rapidapi-key", "b2f2e23b4amsh415f1b5e5a53aa8p1391a0jsn36ef6dc810ec" },
+    },
+        };
+        using (var response = await client.SendAsync(request))
+        {
+            {
+                response.EnsureSuccessStatusCode();
+                Root results = await response.Content.ReadFromJsonAsync<Root>();
+                Console.WriteLine(data);
+
+                }
+            }
+
+        }
+        protected override async Task OnInitializedAsync()
+        {
+            await DataforAutofinish();
+
+        }
+        // Root xxDeserializedClass = JsonConvert.DeserializeObject<Root>
+
+        private async Task ButtononClick()
+        {
+            try
+            {
+                var client = new HttpClient();
+                var request = new HttpRequestMessage
+                {
+                    Method = HttpMethod.Get,
+                    RequestUri = new Uri("https://imdb8.p.rapidapi.com/title/find?q=" + name),
+                    Headers =
+{
+    { "x-rapidapi-host", "imdb8.p.rapidapi.com" },
+    { "x-rapidapi-key", "b2f2e23b4amsh415f1b5e5a53aa8p1391a0jsn36ef6dc810ec" },
+    },
+                };
+                using (var response = await client.SendAsync(request))
+                {
+                    response.EnsureSuccessStatusCode();
+                    data = await response.Content.ReadFromJsonAsync<Root>();
+                    found = true;
+                    Console.WriteLine(data.results);
+
+                    foreach (var t in data.results)
+                    {
+                        if (t.year != 0)
+                        {
+                            title.Add(new Result { id = t.id, title = t.title, year = t.year });
+                        }
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                found = false;
+            }
+
+        }
+    }
